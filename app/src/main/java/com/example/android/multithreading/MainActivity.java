@@ -3,6 +3,7 @@ package com.example.android.multithreading;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -30,6 +31,8 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
     private String[] listOfImages;
     private ProgressBar progressBar;
     private LinearLayout loadingSection = null;
+    private Handler handler;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,10 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         listView.setOnItemClickListener(this);
         listOfImages = getResources().getStringArray(R.array.imageUrls);
         progressBar = (ProgressBar) findViewById(R.id.downloadProgress);
+        loadingSection = (LinearLayout) findViewById(R.id.loadingSection);
+        handler = new Handler();
+
+
     }
 
 
@@ -119,10 +126,11 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
         } catch (IOException e) {
             Log.v("IOEx", e.toString());
         } finally {
-            this.runOnUiThread(new Runnable() {
+            handler.post(new Runnable() {
                 @Override
                 public void run() {
                     loadingSection.setVisibility(View.GONE);
+                   // MainActivity.this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
                 }
             });
             if (connection !=null) {
@@ -165,13 +173,22 @@ public class MainActivity extends ActionBarActivity implements AdapterView.OnIte
 
         @Override
         public void run() {
-            MainActivity.this.runOnUiThread(new Runnable() {
+            handler.post(new Runnable() {
                 @Override
                 public void run() {
                     loadingSection.setVisibility(View.VISIBLE);
                 }
             });
+
+
             downloadImageUsingThreads(url);
+
+            /*MainActivity.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+
+                }
+            });*/
         }
     }
 
