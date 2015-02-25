@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">multiThreading</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string-array name="urls">
+        <item>Image 1</item>
+        <item>Image 2</item>
+        <item>Image 3</item>
+        <item>Image 4</item>
+        <item>Image 5</item>
+        <item>Image 6</item>
+    </string-array>
+    <string-array name="imageUrls">
+        <item>http://www.coretiummedia.com/wp-content/uploads/2013/04/ciao2_big.jpg</item>
+        <item>http://gamescommunitysite.altervista.org/wp-content/uploads/2014/04/ciao-come-guadagnare.jpg</item>
+        <item>https://italianstockholm.files.wordpress.com/2013/06/ciao.gif</item>
+        <item>http://upload.wikimedia.org/wikipedia/it/4/4e/Ciao_PX.jpg</item>
+        <item>http://www.memorizzare.eu/wp-content/uploads/2010/05/ciao_big_aranciobello-copia1.jpg</item>
+        <item>http://c.universalscraps.com/files/it/ciao/ciao_125.gif</item>
+
+    </string-array>
+</resources>
